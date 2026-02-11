@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AnjunoX Sticker Maker</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
+<style>
+body { text-align:center; font-family:Arial; }
+canvas { border:1px solid #ccc; margin-top:20px; }
+button { padding:10px; margin:5px; }
+</style>
+</head>
+<body>
+
+<h2>Create Your Sticker</h2>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+<br>
+
+<button onclick="addText()">Add Text</button>
+<button onclick="addCircle()">Add Shape</button>
+<button onclick="download()">Download</button>
+
+<script>
+var canvas = new fabric.Canvas('canvas');
+
+function addText(){
+var text = new fabric.IText('Your Text', {
+left:100,
+top:100,
+fill:'black'
+});
+canvas.add(text);
+}
+
+function addCircle(){
+var circle = new fabric.Circle({
+radius:50,
+fill:'red',
+left:150,
+top:150
+});
+canvas.add(circle);
+}
+
+function download(){
+var link = document.createElement('a');
+link.download = 'sticker.png';
+link.href = canvas.toDataURL();
+link.click();
+}
+</script>
+
+</body>
+</html>
