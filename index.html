@@ -1,168 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AnjunoX Studio</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-body{
-margin:0;
-font-family: 'Georgia', serif;
-background:#f4f1ed;
-color:#2c2c2c;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
+body{
+  font-family:'Inter',sans-serif;
+  background:#e8e3dc;
+  color:#333;
+}
+
+/* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-background:white;
-box-shadow:0 2px 5px rgba(0,0,0,0.05);
+  background:#f4f1ed;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 30px;
+  position:relative;
 }
 
 .logo{
-font-size:26px;
-font-weight:bold;
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:600;
 }
 
+/* DESKTOP MENU */
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#f4f1ed;
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  padding:20px;
+}
+
+.mobile-menu a{
+  padding:12px 0;
+  text-decoration:none;
+  color:#333;
+  border-bottom:1px solid #ddd;
+}
+
+/* HERO */
 .hero{
-text-align:center;
-padding:60px 20px;
+  text-align:center;
+  padding:80px 20px;
 }
 
 .hero h1{
-font-size:34px;
-margin-bottom:10px;
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  margin-bottom:15px;
 }
 
 .hero p{
-font-size:16px;
-margin-bottom:25px;
+  font-size:18px;
+  margin-bottom:30px;
 }
 
 .btn{
-padding:12px 25px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-size:15px;
-margin:5px;
+  padding:12px 25px;
+  border-radius:6px;
+  text-decoration:none;
+  margin:5px;
+  display:inline-block;
 }
 
 .btn-primary{
-background:#6b4b3e;
-color:white;
+  background:#7a523b;
+  color:#fff;
 }
 
-.btn-secondary{
-background:white;
-border:1px solid #6b4b3e;
-color:#6b4b3e;
+.btn-outline{
+  border:1px solid #7a523b;
+  color:#7a523b;
 }
 
-.section{
-padding:40px 20px;
-text-align:center;
-}
-
+/* PRODUCT SECTION */
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-max-width:1000px;
-margin:auto;
+  text-align:center;
+  padding:50px 20px;
 }
 
-.card{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+.product-card{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  max-width:300px;
+  margin:20px auto;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.card img{
-width:100%;
-border-radius:8px;
+.product-card img{
+  width:100%;
+  border-radius:10px;
 }
 
-.card h3{
-margin:10px 0 5px;
+.product-card h3{
+  margin:15px 0 5px;
 }
 
-.price{
-font-weight:bold;
-margin-bottom:10px;
+.product-card p{
+  margin-bottom:15px;
+  font-weight:500;
 }
 
-.buy-btn{
-background:#8b5e3c;
-color:white;
-padding:8px 15px;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-footer{
-margin-top:40px;
-padding:20px;
-background:white;
-text-align:center;
-font-size:14px;
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{
+    display:none;
+  }
+  .menu-toggle{
+    display:block;
+  }
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-<div class="logo">AnjunoX</div>
-<div>☰</div>
+  <div class="logo">AnjunoX Studio</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">Studio</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">Studio</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
 </header>
 
 <section class="hero">
-<h1>Creative Digital Studio</h1>
-<p>Templates, Stickers & AI Designs</p>
-<button class="btn btn-primary" onclick="location.href='#products'">Shop Now</button>
-<button class="btn btn-secondary">Explore Studio</button>
+  <h1>Creative Digital Studio</h1>
+  <p>Templates, Stickers & AI Designs</p>
+  <a href="#" class="btn btn-primary">Shop Now</a>
+  <a href="#" class="btn btn-outline">Explore Studio</a>
 </section>
 
-<section class="section" id="products">
-<h2>Featured Products</h2>
+<section class="products">
+  <h2>Featured Products</h2>
 
-<div class="products">
+  <div class="product-card">
+    <!-- IMPORTANT: image folder me image rakho -->
+    <img src="images/sticker.png" alt="Cute Fairy Sticker">
+    <h3>Cute Fairy PNG Sticker</h3>
+    <p>$1.99</p>
+    <a href="#" class="btn btn-primary">Buy on Gumroad</a>
+  </div>
 
-<!-- PRODUCT 1 -->
-<div class="card">
-<img src="sticker.png">
-<h3>Cute Fairy PNG Sticker</h3>
-<div class="price">$1.99</div>
-<button class="buy-btn" onclick="window.open('https://anjunox.gumroad.com/l/nxnucz')">
-Buy on Gumroad
-</button>
-</div>
-
-<!-- PRODUCT 2 (Future product add here) -->
-<!--
-<div class="card">
-<img src="image2.png">
-<h3>Product Name</h3>
-<div class="price">$4.99</div>
-<button class="buy-btn">Buy Now</button>
-</div>
--->
-
-</div>
 </section>
 
-<footer>
-⚡ Instant Download | 🔒 Secure Payment | Easy to Use
-<br><br>
-© 2026 AnjunoX Studio
-</footer>
+<script>
+function toggleMenu(){
+  var menu = document.getElementById("mobileMenu");
+  if(menu.style.display === "flex"){
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+}
+</script>
 
 </body>
 </html>
